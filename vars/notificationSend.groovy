@@ -1,5 +1,5 @@
 def call(String cb){
-    if (cb == SUCCESS){
+    if (cb == "SUCCESS"){
                 emailext (
                     subject: "SUCCESSFUL:Job ${env.JOB_NAME}",
                     body: """
@@ -14,13 +14,13 @@ def call(String cb){
                     mimeType: 'text/html'
                     ) 
     }
-    else if (cb == FAILURE){
+    else if (cb == "FAILURE"){
             emailext (
                 subject: "FAILED:Job ${env.JOB_NAME}",
                 body: "Job ${env.JOB_NAME} with ${env.BUILD_NUMBER} has finished with failure. This is the job URL: ${env.JOB_URL}",
                 to: "zholshygulnaz01@gmail.com")
     }
-    else if (cb == UNSTABLE){
+    else if (cb == "UNSTABLE"){
             emailext (
                 subject: "FAILED:Job ${env.JOB_NAME}",
                 body: "Job ${env.JOB_NAME} with ${env.BUILD_NUMBER} has finished with failure. This is the job URL: ${env.JOB_URL}",
